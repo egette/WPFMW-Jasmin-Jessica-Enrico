@@ -6,7 +6,7 @@ include('db.php');
 <head>
 	<meta http-equiv="Cache-Control" content="max-age=3600, public">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Die Zock3r-W0nd3rland</title>
+	<title>Das Zocker-Wonderland</title>
 	<meta name="Content-Language" content="de" />
 	<meta name="language" content="Deutsch" />
 	<meta name="description" content="Die neusten Infos zu alles Games!" />
@@ -19,5 +19,5 @@ include('db.php');
 </head>
 <body>
 	<header>
-		<a href="."><img src="../img/logo-ganz.png" alt="Logo von Zock3r-W0nd3rland" /></a>
+		<a href="."><img src="../img/logo-ganz.png" alt="Logo von Zocker-Wonderland" /></a>
 	</header>
