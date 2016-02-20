@@ -113,7 +113,6 @@ $('#suche').keypress(function(event){
     var keycode = (event.keyCode ? event.keyCode : event.which);
     if(keycode == '13'){
 		event.preventDefault();
-        alert('You pressed a "enter" key in textbox'); 
 		var query = $('#suche').val();
 		if(query !== ""){
 		search();
