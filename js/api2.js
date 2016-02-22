@@ -1,4 +1,25 @@
+
+function showResults(result) {
+
+      var html = "";
+	  var platform = "";
+      $.each(result.results, function(index, value) {
+        var gameName = value.name;
+        var boxArt = value.image ? value.image.icon_url : '';
+        var releaseDate = value.original_release_date;
+		$.each(value.platforms, function(index, value) {
+         platform += (value.name + " ");
+		});
+        var site_detail = value.site_detail_url;
+        html += "<li><p>" + gameName + "</p></li>" + "<img src=" +boxArt + ">" + "<p>" + releaseDate + "</p>" + platform + "</p>" + "<a href='" + site_detail + "'><p>Click here for more information</p></a>";
+      });
+
+      $("#result").html(html);
+
+}
+
 $(document).ready(function() {
+
 
 /*
  *  Send a get request to the Giant bomb api.
@@ -9,7 +30,6 @@ $(document).ready(function() {
 function sendRequest(resource, data, callbacks) {
     var baseURL = 'http://giantbomb.com/api';
     var apiKey = "969800c88a4d50d16ff61120543367584a42ce19";
-    var format = 'json';
 
     // make sure data is an empty object if its not defined.
     data = data || {};
@@ -26,7 +46,7 @@ function sendRequest(resource, data, callbacks) {
     filters =  (tmpArray.length > 0) ? '&' + tmpArray.join('&') : '';
 
     // Create the request url.
-    var requestURL = baseURL + resource + "?api_key=" + apiKey + "&format=" + format + filters;
+    var requestURL = baseURL + resource + "/?api_key=" + apiKey  + filters;
 
     // Set custom callbacks if there are any, otherwise use the default onces.
     // Explanation: if callbacks.beforesend is passend in the argument callbacks, then use it. 
@@ -36,28 +56,24 @@ function sendRequest(resource, data, callbacks) {
     callbacks.success = callbacks.success || function(response) {};
     callbacks.error = callbacks.error || function(response) {};
     callbacks.complete = callbacks.complete || function(response) {};
-
+	
     // the actual ajax request
     $.ajax({
         url: requestURL,
-        method: 'GET',
-        dataType: 'json',
-
-        // Callback methods,
-        beforeSend: function() {
-            callbacks.beforeSend()
-        },
-        success: function(response) {
-            callbacks.success(response);
-        },
-        error: function(response) {
-            callbacks.error(response);
-        },
-        complete: function() {
-            callbacks.complete();
-        }
-    });
+        type: 'GET',
+		data: {
+			format: "jsonp",
+			//crossDomain: true,
+			json_callback: "showResults",
+		},
+		dataType: 'jsonp',
+        
+    }).done(function(data) {
+        showResults(data.results);
+        console.log(data);
+      });
 }
+
 function search() {
     // Get your text box input, something like: 
     // You might want to put a validate and sanitation function before sending this to the ajax function.
@@ -73,20 +89,12 @@ function search() {
     sendRequest('/search', data, { 
         // Custom callbacks, define here what you want the search callbacks to do when fired.
         beforeSend: function(data) {},
-        success: function(data) {
-			$('#result').empty();
-			$('#result').append('Found ' + data.number_of_total_results + ' results for ' + query);
-			var games = data.results;
-			$.each(games, function(index, game) {
-				$('#result').append('<h1>' + game.name + '</h1>');
-				$('#result').append('<p>' + game.deck + '</p>');
-				$('#result').append('<img src="' + game.image.thumb_url + '" width="128" height="160" />');
-			});
-		},
+        success: function(data) {},
         error: function(data) {},
         complete: function(data) {},
     });
 }
+
 
 function getGame() {
     // get game id from somewhere like a link.

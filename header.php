@@ -15,8 +15,8 @@ include('db.php');
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<link rel="shortcut icon" href="../img/favicon.ico" type="image/vnd.microsoft.icon">
 	<link rel="icon" href="../img/favicon.ico" type="image/vnd.microsoft.icon">
-	<link rel="stylesheet" href="../css/style.css">
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
 </head>
 <body>
 	<header>

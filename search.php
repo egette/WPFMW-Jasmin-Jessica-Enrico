@@ -5,4 +5,4 @@
 	
 <div id="result"></div>
 
-<script src="/js/api.js"></script>
+<script src="/js/api2.js"></script>
