@@ -1,4 +1,3 @@
-
 function showResults(result) {
 
       var html = "";
@@ -10,24 +9,40 @@ function showResults(result) {
 		$.each(value.platforms, function(index, value) {
          platform += (value.name + " ");
 		});
+		var deck = value.deck;
+		var description = value.description;
+		
         var site_detail = value.site_detail_url;
-        html += "<li><p>" + gameName + "</p></li>" + "<img src=" +boxArt + ">" + "<p>" + releaseDate + "</p>" + platform + "</p>" + "<a href='" + site_detail + "'><p>Click here for more information</p></a>";
+        html += "<li><p>" + gameName + "</p></li>" + "<img src=" +boxArt + ">" + "<p>" + releaseDate + "</p><p>" + platform + "</p><p>" + deck +"</p>" + "<a href='" + site_detail + "'><p>Click here for more information</p></a>";
       });
 
       $("#result").html(html);
 
 }
 
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
 $(document).ready(function() {
-
-
 /*
  *  Send a get request to the Giant bomb api.
  *  @param string resource set the RESOURCE.
  *  @param object data specifiy any filters or fields.
  *  @param object callbacks specify any custom callbacks.
  */
-function sendRequest(resource, data, callbacks) {
+function sendRequest(resource, filter2, data) {
     var baseURL = 'http://giantbomb.com/api';
     var apiKey = "969800c88a4d50d16ff61120543367584a42ce19";
 
@@ -46,16 +61,15 @@ function sendRequest(resource, data, callbacks) {
     filters =  (tmpArray.length > 0) ? '&' + tmpArray.join('&') : '';
 
     // Create the request url.
-    var requestURL = baseURL + resource + "/?api_key=" + apiKey  + filters;
+    var requestURL = baseURL + resource + "?api_key=" + apiKey + filter2 + filters;
 
-    // Set custom callbacks if there are any, otherwise use the default onces.
-    // Explanation: if callbacks.beforesend is passend in the argument callbacks, then use it. 
-    // If not "||"" set an default function.
-    var callbacks = callbacks || {};
-    callbacks.beforeSend = callbacks.beforeSend || function(response) {};
-    callbacks.success = callbacks.success || function(response) {};
-    callbacks.error = callbacks.error || function(response) {};
-    callbacks.complete = callbacks.complete || function(response) {};
+	//Callback je nach RESOURCE
+	if(resource == "/search" || "/games") {
+		var resultcallback = "showResults";
+	};
+	if(resource == "/game/"){
+		var resultcallback = "showResultsgame";
+	};
 	
     // the actual ajax request
     $.ajax({
@@ -64,7 +78,7 @@ function sendRequest(resource, data, callbacks) {
 		data: {
 			format: "jsonp",
 			//crossDomain: true,
-			json_callback: "showResults",
+			json_callback: resultcallback,
 		},
 		dataType: 'jsonp',
         
@@ -84,30 +98,46 @@ function search() {
         query: query,
         resources: 'game'
     };
-
+	var filter = "";
+  
     // Send the ajax request with to '/search' resource and with custom callbacks
-    sendRequest('/search', data, { 
-        // Custom callbacks, define here what you want the search callbacks to do when fired.
-        beforeSend: function(data) {},
-        success: function(data) {},
-        error: function(data) {},
-        complete: function(data) {},
-    });
+    sendRequest('/search', filter, data);
 }
 
+function getPlatformGames() {
+    var id =  getUrlParameter('id');
+    var resource = '/games';
+	var filter = '&platform=' + id;
+    // Set the fields or filters 
+    var data = {
+        field_list: 'name,description,company,deck,image,id,original_release_date'
+    };
+
+    sendRequest(resource, filter, data);
+}
+
+function getGenres() {
+    var id =  getUrlParameter('genre');
+    var resource = '/genres';
+	var filter = '&platform=' + id;
+    // Set the fields or filters 
+    var data = {
+        field_list: 'name,description,company,deck,image,id,original_release_date'
+    };
+    sendRequest(resource, filter, data);
+}
 
 function getGame() {
     // get game id from somewhere like a link.
     var gameID = '3030-38206';
-    var resource = '/game/' + gameID;
+    var resource = '/game/';
 
     // Set the fields or filters 
     var data = {
         field_list: 'name,description'
     };
 
-    // No custom callbacks defined here, just use the default onces.
-    sendRequest(resource, data);
+    sendRequest(resource, gameID, data);
 }
 
 $('#enter').click(function (ev) {
@@ -127,5 +157,9 @@ $('#suche').keypress(function(event){
 		}		
     }
 });
+
+if(getUrlParameter('id') != ""){
+getPlatformGames();
+}
 
 });

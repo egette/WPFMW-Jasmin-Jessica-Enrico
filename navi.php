@@ -23,7 +23,7 @@
         <li><a href="#"><span>Konsole</span></a>
             <div class="dropdown">
             <ul>
-                <li><a href="content.php">Playstation</a></li>
+                <li><a href="?id=19">Playstation 2</a></li>
                 <li><a href="content.php">XBox</a></li>
                 <li><a href="content.php">Wii</a></li>
                 <li><a href="content.php">Nintento 3DS</a></li>
