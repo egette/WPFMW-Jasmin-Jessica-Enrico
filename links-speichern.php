@@ -1,5 +1,7 @@
 <?php
 session_start();
+include('header.php');
+include('navi.php');
 if(!isset($_SESSION['userid'])) {
 	die('Bitte zuerst <a href="login.php">einloggen</a>');
 }
@@ -12,11 +14,11 @@ $mysqli = new mysqli("localhost", "root", "", "games");
 if ($mysqli->connect_errno) {
 	echo "Failes to connnect to MySQL: (" . $mysqli->connect_errno . ")" . $mysqli->connect_errno;
 }
-echo $mysqli->host_info . "\n";
+//echo $mysqli->host_info . "\n";
 
 if(isset($_GET['save'])) {
 	$error = false;
-	$gameid =;
+	$gameid = $_GET['blubb'];
 	$name = $_POST['name'];
 	$youtube = $_POST['youtube'];
 	$homepage = $_POST['homepage'];

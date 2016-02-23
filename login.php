@@ -1,12 +1,10 @@
 <?php 
 session_start();
-include('header.php');
-
 $mysqli = new mysqli("localhost", "root", "", "users");
 if ($mysqli->connect_errno) {
 	echo "Failes to connnect to MySQL: (" . $mysqli->connect_errno . ")" . $mysqli->connect_errno;
 }
-echo $mysqli->host_info . "\n";
+//echo $mysqli->host_info . "\n";
  
 if(isset($_GET['login'])) {
 	$email = $_POST['email'];
@@ -23,7 +21,7 @@ if(isset($_GET['login'])) {
 	//Überprüfung des Passworts
 	if ($user !== false && password_verify($passwort, $pw->passwort)) {
 		$_SESSION['userid'] = $pw->id;
-		die('Login erfolgreich. Weiter zu <a href="geheim.php">internen Bereich</a>');
+		die('Login erfolgreich. Weiter zu <a href="links-speichern.php">Links zu Spielen abspeichern</a>');
 	} else {
 		$errorMessage = "E-Mail oder Passwort war ung&uuml;ltig<br>";
 	}
@@ -36,7 +34,7 @@ if(isset($errorMessage)) {
 	echo $errorMessage;
 }
 ?>
- 
+ <div id="login">
 <form action="?login=1" method="post">
 E-Mail:<br>
 <input type="email" size="40" maxlength="250" name="email"><br><br>
@@ -46,5 +44,4 @@ Dein Passwort:<br>
  
 <input type="submit" value="Abschicken">
 </form> 
-</body>
-</html>
+</div>

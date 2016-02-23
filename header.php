@@ -17,6 +17,7 @@ include('db.php');
 	<link rel="icon" href="../img/favicon.ico" type="image/vnd.microsoft.icon">
 	<link rel="stylesheet" href="css/style.css">
 	<script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script src="/js/api2.js"></script>
 </head>
 <body>
 	<header>

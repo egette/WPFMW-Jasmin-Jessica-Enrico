@@ -1,12 +1,13 @@
 <?php 
 session_start();
 include('header.php');
+include('navi.php');
 
 $mysqli = new mysqli("localhost", "root", "", "users");
 if ($mysqli->connect_errno) {
 	echo "Failes to connnect to MySQL: (" . $mysqli->connect_errno . ")" . $mysqli->connect_errno;
 }
-echo $mysqli->host_info . "\n";
+//echo $mysqli->host_info . "\n";
 
 $showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
  

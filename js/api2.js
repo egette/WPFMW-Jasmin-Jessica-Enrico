@@ -11,10 +11,34 @@ function showResults(result) {
 		});
 		var deck = value.deck;
 		var description = value.description;
+		var gameID = value.id;
 		
         var site_detail = value.site_detail_url;
-        html += "<li><p>" + gameName + "</p></li>" + "<img src=" +boxArt + ">" + "<p>" + releaseDate + "</p><p>" + platform + "</p><p>" + deck +"</p>" + "<a href='" + site_detail + "'><p>Click here for more information</p></a>";
+        html += "<a href='?idgame=" + gameID + "'><li><p>" + gameName + "</p></li>" + "<img src=" +boxArt + "></a><a href='links-speichern.php?blubb=" + gameID + "'> Links abspeichern? </a><p>" + releaseDate + "</p><p>" + platform + "</p><p>" + deck +"</p>" + "<a href='" + site_detail + "'><p>Click here for more information</p></a>";
       });
+
+      $("#result").html(html);
+
+}
+
+function showResultsgame(result) {
+
+      var html = "";
+	  var platform ="";
+      var value = result.results;
+        var gameName = value.name;
+        var boxArt = value.image ? value.image.icon_url : '';
+        var releaseDate = value.original_release_date;
+		$.each(value.platforms, function(index, value) {
+         platform += (value.name + " ");
+		});
+		var deck = value.deck;
+		var description = value.description;
+		var gameID = value.id;
+		
+        var site_detail = value.site_detail_url;
+        html += "<a href='?gameid=" + gameID + "'><li><p>" + gameName + "</p></li>" + "<img src=" +boxArt + "></a>" + "<p>" + releaseDate + "</p><p>" + platform + "</p><p>" + deck +"</p><p>" + description +"</p>"  + "<a href='" + site_detail + "'><p>Click here for more information</p></a>";
+      
 
       $("#result").html(html);
 
@@ -36,12 +60,6 @@ var getUrlParameter = function getUrlParameter(sParam) {
 };
 
 $(document).ready(function() {
-/*
- *  Send a get request to the Giant bomb api.
- *  @param string resource set the RESOURCE.
- *  @param object data specifiy any filters or fields.
- *  @param object callbacks specify any custom callbacks.
- */
 function sendRequest(resource, filter2, data) {
     var baseURL = 'http://giantbomb.com/api';
     var apiKey = "969800c88a4d50d16ff61120543367584a42ce19";
@@ -61,8 +79,12 @@ function sendRequest(resource, filter2, data) {
     filters =  (tmpArray.length > 0) ? '&' + tmpArray.join('&') : '';
 
     // Create the request url.
-    var requestURL = baseURL + resource + "?api_key=" + apiKey + filter2 + filters;
-
+	if(resource == "/game/"){
+		var requestURL = baseURL + resource +  filter2 + "?api_key=" + apiKey + filters;
+	} else {
+		var requestURL = baseURL + resource + "?api_key=" + apiKey + filter2 + filters;
+	}
+	
 	//Callback je nach RESOURCE
 	if(resource == "/search" || "/games") {
 		var resultcallback = "showResults";
@@ -104,8 +126,7 @@ function search() {
     sendRequest('/search', filter, data);
 }
 
-function getPlatformGames() {
-    var id =  getUrlParameter('id');
+function getPlatformGames(id) {
     var resource = '/games';
 	var filter = '&platform=' + id;
     // Set the fields or filters 
@@ -127,14 +148,12 @@ function getGenres() {
     sendRequest(resource, filter, data);
 }
 
-function getGame() {
-    // get game id from somewhere like a link.
-    var gameID = '3030-38206';
+function getGame(gameID) {
     var resource = '/game/';
 
     // Set the fields or filters 
     var data = {
-        field_list: 'name,description'
+      //  field_list: 'name,description'
     };
 
     sendRequest(resource, gameID, data);
@@ -158,8 +177,14 @@ $('#suche').keypress(function(event){
     }
 });
 
-if(getUrlParameter('id') != ""){
-getPlatformGames();
+if(getUrlParameter('id')){
+	var id = getUrlParameter('id');
+	getPlatformGames(id);
+}
+
+if(getUrlParameter('idgame')){
+	var gameID = getUrlParameter('idgame');
+	getGame(gameID);
 }
 
 });
