@@ -14,7 +14,7 @@ function showResults(result) {
 		var gameID = value.id;
 		
         var site_detail = value.site_detail_url;
-        html += "<a href='?idgame=" + gameID + "'><li><p>" + gameName + "</p></li>" + "<img src=" +boxArt + "></a><a href='links-speichern.php?idgame=" + gameID + "'> Links abspeichern? </a><p>" + releaseDate + "</p><p>" + platform + "</p><p>" + deck +"</p>" + "<a href='" + site_detail + "'><p>Click here for more information</p></a>";
+        html += "<a href='?idgame=" + gameID + "'><li><p>" + gameName + "</p></li>" + "<img src=" +boxArt + "></a><a href='links-speichern.php?idgame=" + gameID + "'> Links abspeichern? </a><p>" + releaseDate + "</p><p>" + platform + "</p><p>" + deck +"</p>" + "<a href='" + site_detail + "'><p>Weitere Informationen</p></a>";
       });
 
       $("#result").html(html);
@@ -37,7 +37,7 @@ function showResultsgame(result) {
 		var gameID = value.id;
 		
         var site_detail = value.site_detail_url;
-        html += "<a href='?gameid=" + gameID + "'><li><p>" + gameName + "</p></li>" + "<img src=" +boxArt + "></a>" + "<p>" + releaseDate + "</p><p>" + platform + "</p><p>" + deck +"</p><p>" + description +"</p>"  + "<a href='" + site_detail + "'><p>Click here for more information</p></a>";
+        html += "<a href='?gameid=" + gameID + "'><li><p>" + gameName + "</p></li>" + "<img src=" +boxArt + "></a>" + "<p>" + releaseDate + "</p><p>" + platform + "</p><p>" + deck +"</p><p>" + description +"</p>"  + "<a href='" + site_detail + "'><p>Weitere Informationen</p></a>";
       
 
       $("#result").html(html);
@@ -128,7 +128,7 @@ function search() {
 
 function getPlatformGames(id) {
     var resource = '/games';
-	var filter = '&platform=' + id;
+	var filter = '&platforms=' + id;
     // Set the fields or filters 
     var data = {
         field_list: 'name,description,company,deck,image,id,original_release_date'
