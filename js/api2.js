@@ -14,7 +14,7 @@ function showResults(result) {
 		var gameID = value.id;
 		
         var site_detail = value.site_detail_url;
-        html += "<a href='?idgame=" + gameID + "'><li><p>" + gameName + "</p></li>" + "<img src=" +boxArt + "></a><a href='links-speichern.php?blubb=" + gameID + "'> Links abspeichern? </a><p>" + releaseDate + "</p><p>" + platform + "</p><p>" + deck +"</p>" + "<a href='" + site_detail + "'><p>Click here for more information</p></a>";
+        html += "<a href='?idgame=" + gameID + "'><li><p>" + gameName + "</p></li>" + "<img src=" +boxArt + "></a><a href='links-speichern.php?idgame=" + gameID + "'> Links abspeichern? </a><p>" + releaseDate + "</p><p>" + platform + "</p><p>" + deck +"</p>" + "<a href='" + site_detail + "'><p>Click here for more information</p></a>";
       });
 
       $("#result").html(html);

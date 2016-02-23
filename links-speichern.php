@@ -18,8 +18,7 @@ if ($mysqli->connect_errno) {
 
 if(isset($_GET['save'])) {
 	$error = false;
-	$gameid = $_GET['blubb'];
-	$name = $_POST['name'];
+	$gameid = $_GET['idgame'];
 	$youtube = $_POST['youtube'];
 	$homepage = $_POST['homepage'];
 	$forum = $_POST['forum'];
@@ -32,8 +31,8 @@ if(isset($_GET['save'])) {
 	
 		//Keine Fehler, wir können den Nutzer registrieren
 	if(!$error) {	
-		$statement = $mysqli->prepare("INSERT INTO games (gameid, name, youtube, homepage, forum, tipps) VALUES (?, ?, ?, ?, ?, ?)");
-		$statement->bind_param("ssssss", $gameid, $name, $youtube, $homepage, $forum, $tipps);
+		$statement = $mysqli->prepare("INSERT INTO games (gameid, youtube, homepage, forum, tipps) VALUES (?, ?, ?, ?, ?)");
+		$statement->bind_param("sssss", $gameid, $youtube, $homepage, $forum, $tipps);
 		$result = $statement->execute();
 		
 		if($result) {		
@@ -46,8 +45,6 @@ if(isset($_GET['save'])) {
 }
 ?>
 <form action="?save=1" method="post">
-Name:<br>
-<input type="text" size="40" maxlenght="250" name="name"><br><br>
 
 Youtube:<br>
 <input type="text" size="40" maxlenght="250" name="youtube"><br><br>
@@ -63,3 +60,7 @@ Tipps:<br>
  
 <input type="submit" value="Abschicken">
 </form>
+
+<?php
+include('content.php');
+?>

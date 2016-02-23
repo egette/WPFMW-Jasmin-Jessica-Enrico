@@ -1,5 +1,4 @@
 <?php 
-session_start();
 $mysqli = new mysqli("localhost", "root", "", "users");
 if ($mysqli->connect_errno) {
 	echo "Failes to connnect to MySQL: (" . $mysqli->connect_errno . ")" . $mysqli->connect_errno;
