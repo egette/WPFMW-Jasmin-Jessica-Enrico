@@ -20,7 +20,7 @@ if(isset($_GET['register'])) {
 	$passwort2 = $_POST['passwort2'];
   
 	if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-		echo 'Bitte eine gültige E-Mail-Adresse eingeben<br>';
+		echo 'Bitte eine gÃ¼ltige E-Mail-Adresse eingeben<br>';
 		$error = true;
 	} 	
 	if(strlen($passwort) == 0) {
@@ -28,11 +28,11 @@ if(isset($_GET['register'])) {
 		$error = true;
 	}
 	if($passwort != $passwort2) {
-		echo 'Die Passwörter müssen übereinstimmen<br>';
+		echo 'Die PasswÃ¶rter mÃ¼ssen Ã¼bereinstimmen<br>';
 		$error = true;
 	}
 	
-	//Überprüfe, dass die E-Mail-Adresse noch nicht registriert wurde
+	//ÃœberprÃ¼fe, dass die E-Mail-Adresse noch nicht registriert wurde
 	if(!$error) { 
 		$query = "SELECT 'email' FROM users WHERE email=?";
 		
@@ -52,7 +52,7 @@ if(isset($_GET['register'])) {
 		}	
 	}
 	
-	//Keine Fehler, wir können den Nutzer registrieren
+	//Keine Fehler, wir kÃ¶nnen den Nutzer registrieren
 	if(!$error) {	
 		$passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
 		
