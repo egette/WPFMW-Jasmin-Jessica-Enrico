@@ -2,6 +2,7 @@
 session_start();
 include('header.php');
 include('navi.php');
+include('search.php');
 if(!isset($_SESSION['userid'])) {
 	die('Bitte zuerst <a href="login.php">einloggen</a>');
 }
@@ -10,43 +11,45 @@ if(!isset($_SESSION['userid'])) {
 $userid = $_SESSION['userid'];
  
 echo "Hallo User: ".$userid;
-$mysqli = new mysqli("localhost", "root", "", "games");
+$mysqli = new mysqli("localhost", "root", "", "users");
 if ($mysqli->connect_errno) {
 	echo "Failes to connnect to MySQL: (" . $mysqli->connect_errno . ")" . $mysqli->connect_errno;
 }
 //echo $mysqli->host_info . "\n";
 
+$showFormular = true; //Variable ob das Registrierungsformular angezeigt werden soll
+
 if(isset($_GET['save'])) {
 	$error = false;
-	$gameid = $_GET['idgame'];
+
+	$gameid = $_POST['gameid'];
 	$youtube = $_POST['youtube'];
 	$homepage = $_POST['homepage'];
 	$forum = $_POST['forum'];
 	$tipps = $_POST['tipps'];
-  	
-	if(strlen($name) == 0) {
-		echo 'Bitte einen Namen angeben<br>';
-		$error = true;
-	}
 	
 		//Keine Fehler, wir können den Nutzer registrieren
 	if(!$error) {	
 		$statement = $mysqli->prepare("INSERT INTO games (gameid, youtube, homepage, forum, tipps) VALUES (?, ?, ?, ?, ?)");
-		$statement->bind_param("sssss", $gameid, $youtube, $homepage, $forum, $tipps);
+		$statement->bind_param("issss", $gameid, $youtube, $homepage, $forum, $tipps);
 		$result = $statement->execute();
 		
 		if($result) {		
-			echo "Das Spiel wurde erfolgreich eingetragen. <a href='index.php?game=$gameid'>Zum Spiel</a>";
+			echo "Das Spiel wurde erfolgreich eingetragen. <a href='game.php?idgame=$gameid'>Zum Spiel</a>";
 			$showFormular = false;
 		} else {
 			echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
 		}
 	} 
 }
+if($showFormular) {
 ?>
 <form action="?save=1" method="post">
 
-Youtube:<br>
+<input type="hidden" name="gameid" value="<?php echo $_GET['idgame'];?>" />
+
+Youtube ID :<br>
+z.B: von https://www.youtube.com/watch?v=ZjCUVspoVew nur ZjCUVspoVew eingeben.
 <input type="text" size="40" maxlenght="250" name="youtube"><br><br>
 
 Homepage:<br>
@@ -62,5 +65,6 @@ Tipps:<br>
 </form>
 
 <?php
+}
 include('content.php');
 ?>

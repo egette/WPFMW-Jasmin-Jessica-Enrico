@@ -9,7 +9,7 @@ if ($mysqli->connect_errno) {
 }
 //echo $mysqli->host_info . "\n";
 
-$showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
+$showFormular = true; //Variable ob das Registrierungsformular angezeigt werden soll
  
 if(isset($_GET['register'])) {
 	$error = false;
@@ -34,7 +34,7 @@ if(isset($_GET['register'])) {
 	
 	//Überprüfe, dass die E-Mail-Adresse noch nicht registriert wurde
 	if(!$error) { 
-		$query = "SELECT 'email' FROM 'users' WHERE email=?";
+		$query = "SELECT 'email' FROM users WHERE email=?";
 		
 		if($statement = $mysqli->prepare($query)){
 			$statement->bind_param("s", $email);

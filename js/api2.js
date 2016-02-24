@@ -14,7 +14,7 @@ function showResults(result) {
 		var gameID = value.id;
 		
         var site_detail = value.site_detail_url;
-        html += "<a href='?idgame=" + gameID + "'><li><p>" + gameName + "</p></li>" + "<img src=" +boxArt + "></a><a href='links-speichern.php?idgame=" + gameID + "'> Links abspeichern? </a><p>" + releaseDate + "</p><p>" + platform + "</p><p>" + deck +"</p>" + "<a href='" + site_detail + "'><p>Weitere Informationen</p></a>";
+        html += "<a href='game.php?idgame=" + gameID + "'><li><p>" + gameName + "</p></li>" + "<img src=" +boxArt + "></a><a href='links-speichern.php?idgame=" + gameID + "'> Links abspeichern? </a><p>" + releaseDate + "</p><p>" + platform + "</p><p>" + deck +"</p>" + "<a href='" + site_detail + "'><p>Weitere Informationen</p></a>";
       });
 
       $("#result").html(html);
@@ -37,7 +37,7 @@ function showResultsgame(result) {
 		var gameID = value.id;
 		
         var site_detail = value.site_detail_url;
-        html += "<a href='?gameid=" + gameID + "'><li><p>" + gameName + "</p></li>" + "<img src=" +boxArt + "></a>" + "<p>" + releaseDate + "</p><p>" + platform + "</p><p>" + deck +"</p><p>" + description +"</p>"  + "<a href='" + site_detail + "'><p>Weitere Informationen</p></a>";
+        html += "<a href='?idgame=" + gameID + "'><li><p>" + gameName + "</p></li>" + "<img src=" +boxArt + "></a>" + "<p>" + releaseDate + "</p><p>" + platform + "</p><p>" + deck +"</p><p>" + description +"</p>"  + "<a href='" + site_detail + "'><p>Weitere Informationen</p></a>";
       
 
       $("#result").html(html);
@@ -111,8 +111,6 @@ function sendRequest(resource, filter2, data) {
 }
 
 function search() {
-    // Get your text box input, something like: 
-    // You might want to put a validate and sanitation function before sending this to the ajax function.
     var query = $('#suche').val();
 
     // Set the fields or filters 
@@ -121,8 +119,7 @@ function search() {
         resources: 'game'
     };
 	var filter = "";
-  
-    // Send the ajax request with to '/search' resource and with custom callbacks
+
     sendRequest('/search', filter, data);
 }
 
@@ -137,21 +134,9 @@ function getPlatformGames(id) {
     sendRequest(resource, filter, data);
 }
 
-function getGenres() {
-    var id =  getUrlParameter('genre');
-    var resource = '/genres';
-	var filter = '&platform=' + id;
-    // Set the fields or filters 
-    var data = {
-        field_list: 'name,description,company,deck,image,id,original_release_date'
-    };
-    sendRequest(resource, filter, data);
-}
-
 function getGame(gameID) {
     var resource = '/game/';
-
-    // Set the fields or filters 
+	// Set the fields or filters 
     var data = {
       //  field_list: 'name,description'
     };
