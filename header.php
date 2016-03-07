@@ -22,16 +22,13 @@ include('db.php');
 <body>
 	<header>
 		<a href="."><img src="img/logo.PNG" alt="Logo von Zocker-Wonderland" id="logo" /></a>
+		<div class="headlogin">
         <?php
             include('search.php');
 
 
             //Wenn nicht eingeloggt, dann login formular und registrierungslinks anzeigen
             if(!isset($_SESSION['userid'])) {
-                ?>
-                <div class="headlogin">
-                <a href="registrieren.php" id="regi"> Noch nicht registriert? </a><br>
-                <?php	
                     include('login.php');
             }
             //wenn eingeloggt, dann link zum ausloggen anzeigen
