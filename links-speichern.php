@@ -3,7 +3,6 @@
 session_start();
 include('header.php');
 include('navi.php');
-include('search.php');
 if(!isset($_SESSION['userid'])) {
 	die('Bitte zuerst <a href="index.php">einloggen</a>');
 }

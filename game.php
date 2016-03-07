@@ -2,22 +2,7 @@
 <?php
 include('header.php');
 include('navi.php');
-include('search.php');
 session_start();
-
-//Wenn nicht eingeloggt, dann login formular und registrierungslinks anzeigen
-if(!isset($_SESSION['userid'])) {
-	?>
-	<br><a href="registrieren.php" id="regi"> Noch nicht registiert? </a><br>
-	<?php	
-		include('login.php');
-}
-//wenn eingeloggt, dann link zum ausloggen anzeigen
-if(isset($_SESSION['userid'])) {
-	?>
-	<br><a href="logout.php" id="logout"> Ausloggen ? </a><br>
-	<?php	
-}
 
 $mysqli = new mysqli("localhost", "root", "", "users");
 if ($mysqli->connect_errno) {
