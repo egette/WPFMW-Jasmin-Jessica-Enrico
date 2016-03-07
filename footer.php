@@ -3,7 +3,3 @@
 		<a href="../common/imprint.php">Impressum/Haftungsausschluss</a> | 
 		<a href="../common/sitemap.php">Sitemap</a>
 </footer>
-	
-
-</body>
-</html>

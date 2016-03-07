@@ -17,7 +17,7 @@ if(isset($_GET['login'])) {
 	
 	$pw = $user->fetch_object();
 	
-	//Überprüfung des Passworts
+	//ÃœberprÃ¼fung des Passworts
 	if ($user !== false && password_verify($passwort, $pw->passwort)) {
 		$_SESSION['userid'] = $pw->id;
 		die('Login erfolgreich. Weiter zu <a href="links-speichern.php">Links zu Spielen abspeichern</a>');

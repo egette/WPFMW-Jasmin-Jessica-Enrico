@@ -1,3 +1,4 @@
+<main>
 <?php 
 session_start();
 include('header.php');
@@ -61,7 +62,7 @@ if(isset($_GET['register'])) {
 		$result = $statement->execute();
 		
 		if($result) {		
-			echo 'Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a>';
+			echo 'Du wurdest erfolgreich registriert. <a href="index.php">Zum Login</a>';
 			$showFormular = false;
 		} else {
 			echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
@@ -91,9 +92,10 @@ Passwort wiederholen:<br>
 <input type="submit" value="Abschicken">
 </form>
  
+
+    </main>
 <?php
+    
+        include('footer.php');
 } //Ende von if($showFormular)
 ?>
- 
-</body>
-</html>

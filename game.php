@@ -1,3 +1,4 @@
+<main>
 <?php
 include('header.php');
 include('navi.php');
@@ -63,3 +64,4 @@ if ($mysqli->connect_errno) {
 	include('footer.php');
 	
 ?>
+    </main>

@@ -1,3 +1,4 @@
+<main>
 <?php
 session_start();
 if(!isset($_SESSION['userid'])) {
@@ -61,3 +62,4 @@ Tipps:<br>
  
 <input type="submit" value="Abschicken">
 </form>
+</main>

@@ -1,10 +1,11 @@
+<main>
 <?php
 session_start();
 include('header.php');
 include('navi.php');
 include('search.php');
 if(!isset($_SESSION['userid'])) {
-	die('Bitte zuerst <a href="login.php">einloggen</a>');
+	die('Bitte zuerst <a href="index.php">einloggen</a>');
 }
  
 //Abfrage der Nutzer ID vom Login
@@ -67,4 +68,9 @@ Tipps:<br>
 <?php
 }
 include('content.php');
+?>
+    </main>
+<?php
+    
+        include('footer.php');
 ?>
