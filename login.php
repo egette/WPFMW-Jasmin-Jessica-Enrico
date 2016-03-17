@@ -41,7 +41,7 @@ E-Mail:<br>
 Dein Passwort:<br>
 <input type="password" size="40"  maxlength="250" name="passwort"><br>
  
-<input type="submit" value="Einloggen">
+<input type="submit" value="Einloggen" id="submit_but">
 </form> 
 <a href="registrieren.php" id="regi"> Noch nicht registriert? </a>
 </div>

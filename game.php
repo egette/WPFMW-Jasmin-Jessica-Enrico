@@ -45,8 +45,8 @@ if ($mysqli->connect_errno) {
 	?><a id="tipps" href="<?php echo $tipps; ?>">Tipps zum Spiel</a><?php
 	}
 	
-	include('content.php');
-	include('footer.php');
-	
 ?>
     </main>
+<?php
+include('footer.php');
+	?>

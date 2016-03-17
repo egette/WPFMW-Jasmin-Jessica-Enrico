@@ -20,6 +20,10 @@ body{
     body{
         padding: 0px;
     }
+    #login{
+        display: none !important;
+        float: none;
+    }
 }
 @media (min-width: 768px){
     body{
@@ -48,17 +52,22 @@ header form{
     text-align: right;
 }
 #logo{
-    width: 20%;
+    max-width: 20%;
 }
+
 #suche{
-    min-width: 30%;   
+    width: 30%; 
+    align-content: center;
 }
 #login{
     display: inline-block;
+    float: right;
     width: 30%;
 }
+
 #login form input{
     display: inline;
+    max-width: 100%;
 }
 .clearer{
     float: none;
@@ -120,7 +129,9 @@ nav a:hover{
     font-size: 24px;
 }
 main{
-    padding: 20px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     flex-grow: 1;
     background-color: rgba(255, 255, 255, 0.8)!important;
     align-content: center;
@@ -140,9 +151,7 @@ footer a:hover{
     text-decoration: underline;
     color: darkblue;
 }
-#logo{
-    max-height: 120px;
-}
+
 #glist{
     list-style-type: none;
     text-decoration: underline;
@@ -155,4 +164,22 @@ footer a:hover{
 #apilinks{
     text-decoration: underline;
     font-weight: bold;
+}
+#submit_but{
+    background-color: azure;
+}
+#submit_but:hover{
+    background-color: black;
+    color: white;
+}
+#enter{
+    background-color: azure;
+}
+#enter:hover{
+    background-color: black;
+    color: white;
+}
+#regi:hover{
+    color: darkblue;
+    text-decoration: underline;
 }
