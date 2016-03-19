@@ -88,10 +88,7 @@ Passwort wiederholen:<br>
  
 <input type="submit" value="Abschicken">
 </form>
- 
-
-</main>
 <?php
-include('footer.php');
 } //Ende von if($showFormular)
+include('footer.php');
 ?>

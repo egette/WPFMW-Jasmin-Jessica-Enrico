@@ -4,10 +4,8 @@ include('header.php');
 include('navi.php');
 session_start();
 
-$mysqli = new mysqli("localhost", "root", "", "users");
-if ($mysqli->connect_errno) {
-	echo "Failes to connnect to MySQL: (" . $mysqli->connect_errno . ")" . $mysqli->connect_errno;
-}
+$db = new Datenbank;
+$mysqli = $db->verbindung();
 
 	$youtube = "";
 	$homepage = "";
@@ -32,7 +30,8 @@ if ($mysqli->connect_errno) {
      } else {
 		 echo "Keine Links in der Datenbank";
 	 }
-	include('content.php');
+	 
+include('content.php');
 	if(strlen($youtube) != 0) {
 		?><iframe id="youtube" width="350" height="315" src="https://www.youtube.com/embed/<?php echo $youtube;?>" frameborder="0" allowfullscreen></iframe><?php
 	}
@@ -45,9 +44,6 @@ if ($mysqli->connect_errno) {
 	if(strlen($tipps) != 0) {
 	?><br><a id="tipps" href="<?php echo $tipps; ?>">Tipps zum Spiel</a><?php
 	}
-	
-?>
-</main>
-<?php
+
 include('footer.php');
 ?>

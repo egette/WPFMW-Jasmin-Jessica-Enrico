@@ -63,8 +63,5 @@ Tipps:<br>
 <?php
 }
 include('content.php');
-?>
-    </main>
-<?php
 include('footer.php');
 ?>

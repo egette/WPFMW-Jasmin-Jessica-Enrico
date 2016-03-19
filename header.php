@@ -23,20 +23,22 @@ include('db.php');
 	<header>
 		<a href="."><img src="img/logo.PNG" alt="Logo von Zocker-Wonderland" id="logo" /></a>
 		<div class="headlogin">
+		<form  method="get" class="suche">
+			<label>Suche: <input type="text" name="suche" id="suche" /></label>
+			<button type="button" id="enter" value="Abschicken">Suche</button>
+		</form>
         <?php
-            include('search.php');
-
             //Wenn nicht eingeloggt, dann login formular und registrierungslinks anzeigen
             if(!isset($_SESSION['userid'])) {
                     include('login.php');
             }
             //wenn eingeloggt, dann link zum ausloggen anzeigen
             if(isset($_SESSION['userid'])) {
-                ?>
+        ?>
                 <button><a href="logout.php" id="logout">  Ausloggen  </a></button><br>
-            <?php	
+        <?php	
             }
-            ?>
+        ?>
         </div>
         <div class="clearer"></div>
 	</header>

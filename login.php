@@ -19,15 +19,11 @@ if(isset($_GET['login'])) {
 		$_SESSION['userid'] = $pw->id;
 		include ('navi.php');
 		die('Login erfolgreich.');
-		
 	} else {
 		$errorMessage = "E-Mail oder Passwort war ung&uuml;ltig<br>";
 	}
-	
 }
-?>
  
-<?php 
 if(isset($errorMessage)) {
 	echo $errorMessage;
 }
