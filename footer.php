@@ -1,5 +1,4 @@
 <footer>
 		&copy; 2016 Jessica Lee Schulz, Jasmin Schermuly, Enrico Gette | 
-		<a href="../common/imprint.php">Impressum/Haftungsausschluss</a> | 
-		<a href="../common/sitemap.php">Sitemap</a>
+		<a href="../common/impressum.php">Impressum/Haftungsausschluss</a> | 
 </footer>

@@ -6,7 +6,7 @@ include('navi.php');
 include('content.php');
 ?>
 </main>
-    <?php
+<?php
 include('footer.php');
 ?>
     

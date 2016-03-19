@@ -13,7 +13,7 @@ $userid = $_SESSION['userid'];
 $db = new Datenbank;
 $mysqli = $db->verbindung();
 
-$showFormular = true; //Variable ob das Registrierungsformular angezeigt werden soll
+$showFormular = true; //Variable ob das Formular angezeigt werden soll
 
 if(isset($_GET['save'])) {
 	$error = false;
@@ -44,8 +44,8 @@ if($showFormular) {
 
 <input type="hidden" name="gameid" value="<?php echo $_GET['idgame'];?>" />
 
-Youtube ID :<br>
-z.B: von https://www.youtube.com/watch?v=ZjCUVspoVew nur ZjCUVspoVew eingeben.
+<br>Youtube ID :<br>
+ https://www.youtube.com/watch?v=<strong>ZjCUVspoVew</strong><br>
 <input type="text" size="40" maxlenght="250" name="youtube"><br><br>
 
 Homepage:<br>
@@ -66,6 +66,5 @@ include('content.php');
 ?>
     </main>
 <?php
-    
-        include('footer.php');
+include('footer.php');
 ?>

@@ -32,21 +32,22 @@ if ($mysqli->connect_errno) {
      } else {
 		 echo "Keine Links in der Datenbank";
 	 }
+	include('content.php');
 	if(strlen($youtube) != 0) {
 		?><iframe id="youtube" width="350" height="315" src="https://www.youtube.com/embed/<?php echo $youtube;?>" frameborder="0" allowfullscreen></iframe><?php
 	}
 	if(strlen($homepage) != 0) {
-		?><a id="homepage" href="<?php echo $homepage; ?>">Homepage</a><?php
+		?><br><a id="homepage" href="<?php echo $homepage; ?>">Homepage</a><?php
 	}
 	if(strlen($forum) != 0) {
-		?><a id="forum" href="<?php echo $forum; ?>">Forum zum Spiel</a><?php
+		?><br><a id="forum" href="<?php echo $forum; ?>">Forum zum Spiel</a><?php
 	}
 	if(strlen($tipps) != 0) {
-	?><a id="tipps" href="<?php echo $tipps; ?>">Tipps zum Spiel</a><?php
+	?><br><a id="tipps" href="<?php echo $tipps; ?>">Tipps zum Spiel</a><?php
 	}
 	
 ?>
-    </main>
+</main>
 <?php
 include('footer.php');
-	?>
+?>
