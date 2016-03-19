@@ -6,16 +6,12 @@ include('navi.php');
 if(!isset($_SESSION['userid'])) {
 	die('Bitte zuerst <a href="index.php">einloggen</a>');
 }
- 
-//Abfrage der Nutzer ID vom Login
+ //Abfrage der Nutzer ID vom Login
 $userid = $_SESSION['userid'];
+ echo "Hallo User: ".$userid;
  
-echo "Hallo User: ".$userid;
-$mysqli = new mysqli("localhost", "root", "", "users");
-if ($mysqli->connect_errno) {
-	echo "Failes to connnect to MySQL: (" . $mysqli->connect_errno . ")" . $mysqli->connect_errno;
-}
-//echo $mysqli->host_info . "\n";
+$db = new Datenbank;
+$mysqli = $db->verbindung();
 
 $showFormular = true; //Variable ob das Registrierungsformular angezeigt werden soll
 

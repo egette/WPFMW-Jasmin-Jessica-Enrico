@@ -4,11 +4,8 @@ session_start();
 include('header.php');
 include('navi.php');
 
-$mysqli = new mysqli("localhost", "root", "", "users");
-if ($mysqli->connect_errno) {
-	echo "Failes to connnect to MySQL: (" . $mysqli->connect_errno . ")" . $mysqli->connect_errno;
-}
-//echo $mysqli->host_info . "\n";
+$db = new Datenbank;
+$mysqli = $db->verbindung();
 
 $showFormular = true; //Variable ob das Registrierungsformular angezeigt werden soll
  
@@ -62,7 +59,7 @@ if(isset($_GET['register'])) {
 		$result = $statement->execute();
 		
 		if($result) {		
-			echo 'Du wurdest erfolgreich registriert. <a href="index.php">Zum Login</a>';
+			echo '<br>Du wurdest erfolgreich registriert.';
 			$showFormular = false;
 		} else {
 			echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
@@ -93,9 +90,8 @@ Passwort wiederholen:<br>
 </form>
  
 
-    </main>
+</main>
 <?php
-    
-        include('footer.php');
+include('footer.php');
 } //Ende von if($showFormular)
 ?>
