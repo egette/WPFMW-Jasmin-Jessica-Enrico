@@ -13,11 +13,12 @@ include('db.php');
 	<meta name="author" content="Jessica Lee Schulz, Jasmin Schermuly, Enrico Gette">
 	<meta name="keywords" content="Games, neue Spiele, Zocken, spielen, PC, Konsolen, Genre">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-	<link rel="shortcut icon" href="../img/favicon.ico" type="image/vnd.microsoft.icon">
-	<link rel="icon" href="../img/favicon.ico" type="image/vnd.microsoft.icon">
-	<link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/icon.png" type="image/png" />
+    <link rel="icon" href="img/icon.png" type="image/png" />
+    <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/style_min.css">
 	<script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
-	<script src="/js/api2.js"></script>
+	<script src="/js/api2_min.js"></script>
 </head>
 <body>
 	<header>

@@ -6,6 +6,7 @@ body{
     min-height: calc(100% - 40px);
     display: table-cell;
     background-color: #9fe8f7;
+    background-image: url(../img/background.png);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -24,6 +25,9 @@ body{
         display: none !important;
         float: none;
     }
+    nav ul li a{ 
+    font-size: 18px;
+  }
 }
 @media (min-width: 768px){
     body{
@@ -62,7 +66,7 @@ header form{
 #login{
     display: inline-block;
     float: right;
-    width: 30%;
+    width: 29%;
 }
 
 #login form input{
@@ -90,6 +94,7 @@ nav li{
     
 }
 nav ul{
+    font-family: 'Audiowide', cursive;
     padding-left: 0;
 }
 nav li ul{
@@ -109,6 +114,7 @@ nav li:hover ul {
 }
 
 nav li ul li{
+    text-shadow: 4px 4px 4px #aaa;
     display: block;
     float: none;
     text-align: left;
@@ -133,14 +139,16 @@ main{
     padding-left: 20px;
     padding-right: 20px;
     flex-grow: 1;
-    background-color: rgba(255, 255, 255, 0.8)!important;
+    background-color: rgba(255, 255, 255, 0.9)!important;
     align-content: center;
 }
 a{
+    font-family: 'Audiowide', cursive;
     text-decoration: none;
     color: black;
 }
 footer{
+    background-color: rgba(255, 255, 255, 0.9)!important;
     font-size: 16px;
     bottom: 0;
     width: 100%;
@@ -166,6 +174,7 @@ footer a:hover{
     font-weight: bold;
 }
 #submit_but{
+    font-family: 'Audiowide', cursive;
     background-color: azure;
 }
 #submit_but:hover{
@@ -173,9 +182,18 @@ footer a:hover{
     color: white;
 }
 #enter{
+    font-family: 'Audiowide', cursive;
     background-color: azure;
 }
 #enter:hover{
+    background-color: black;
+    color: white;
+}
+#logout{
+    font-family: 'Audiowide', cursive;
+    background-color: azure;
+}
+#logout:hover{
     background-color: black;
     color: white;
 }
