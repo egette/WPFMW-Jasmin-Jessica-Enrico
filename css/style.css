@@ -134,6 +134,9 @@ nav a:hover{
 .dropdown a{
     font-size: 24px;
 }
+.font_des{
+ font-family: 'Lato';
+}
 main{
     padding-top: 10px;
     padding-left: 20px;

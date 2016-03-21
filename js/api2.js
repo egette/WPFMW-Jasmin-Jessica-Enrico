@@ -14,7 +14,7 @@ function showResults(result) {
 		var gameID = value.id;
 		
         var site_detail = value.site_detail_url;
-        html += "<a href='game.php?idgame=" + gameID + "'><li id='glist'><p>" + gameName + "</p></li>" + "<img src=" +boxArt + "></a><br /><a id='links' href='links-speichern.php?idgame=" + gameID + "'> Links zum Spiel speichern </a><p>" + releaseDate + "</p><p>" + platform + "</p><p>" + deck +"</p><br/>";
+        html += "<a href='game.php?idgame=" + gameID + "'><li id='glist'><p>" + gameName + "</p></li>" + "<img src=" +boxArt + "></a><br /><a id='links' href='links-speichern.php?idgame=" + gameID + "'> Links zum Spiel speichern </a><p class='font_des' >" + releaseDate + "</p><p class='font_des'>" + platform + "</p><p class='font_des'>" + deck +"</p><br/>";
       });
 
       $("#result").html(html);
@@ -37,7 +37,7 @@ function showResultsgame(result) {
 		var gameID = value.id;
 		
         var site_detail = value.site_detail_url;
-        html += "<a href='game.php?idgame=" + gameID + "'><li id='glist' ><p>" + gameName + "</p></li>" + "<img src=" +boxArt + "></a>" + "<p>" + releaseDate + "</p><p>" + platform + "</p><p>" + deck +"</p><p>" + description +"</p>"  + "<a href='" + site_detail + "'><p>Weitere Informationen</p></a>";
+        html += "<a href='game.php?idgame=" + gameID + "'><li id='glist' ><p>" + gameName + "</p></li>" + "<img src=" +boxArt + "></a>" + "<p class='font_des'>" + releaseDate + "</p><p class='font_des'>" + platform + "</p><div class='font_des'><p class='font_des'>" + deck +"</p><p class='font_des'>" + description +"</p>"  + "<a class='font_des' href='" + site_detail + "'><p>Weitere Informationen</p></a></div>";
       
 
       $("#result").html(html);
